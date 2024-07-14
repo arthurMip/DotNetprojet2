@@ -25,8 +25,7 @@
                 </td>
                 <td>
                     <form asp-action="RemoveFromCart" method="post">
-                        <input type="hidden" name="id"
-                               value="@line.Product.Id" />
+                        <input type="hidden" name="id" value="@line.Product.Id" />
                         <button type="submit" class="btn btn-sm btn-danger">
                             @Localizer["Remove"]
                         </button>

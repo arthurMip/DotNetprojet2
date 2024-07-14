@@ -21,7 +21,6 @@ namespace P2FixAnAppDotNetCode.Controllers
             {
                 _languageService.ChangeUiLanguage(HttpContext, model.Language);
             }
-
             return Redirect(returnUrl);
         }
     }

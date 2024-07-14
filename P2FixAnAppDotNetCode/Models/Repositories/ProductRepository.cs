@@ -59,7 +59,9 @@ namespace P2FixAnAppDotNetCode.Models.Repositories
             product.Stock -= quantityToRemove;
 
             if (product.Stock == 0)
+            {
                 _products.Remove(product);
+            }
         }
     }
 }

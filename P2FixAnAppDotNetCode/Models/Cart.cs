@@ -8,28 +8,19 @@ namespace P2FixAnAppDotNetCode.Models
     /// </summary>
     public class Cart : ICart
     {
-        private List<CartLine> _lines = new List<CartLine>();
+        private readonly List<CartLine> _lines = new List<CartLine>();
 
         /// <summary>
         /// Read-only property for display only
         /// </summary>
-        /// 
-        public IEnumerable<CartLine> Lines => GetCartLineList();
-
-        /// <summary>
-        /// Return the actual cartline list
-        /// </summary>
-        private List<CartLine> GetCartLineList()
-        {
-            return _lines;
-        }
+        public IEnumerable<CartLine> Lines => _lines;
 
         /// <summary>
         /// Adds a product in the cart or increment its quantity in the cart if already added
         /// </summary>//
         public void AddItem(Product product, int quantity)
         {
-            var item = _lines.Find(l => l.Product.Id == product.Id);
+            CartLine item = _lines.Find(l => l.Product.Id == product.Id);
 
             if (item != null)
             {
@@ -48,8 +39,10 @@ namespace P2FixAnAppDotNetCode.Models
         /// <summary>
         /// Removes a product form the cart
         /// </summary>
-        public void RemoveLine(Product product) =>
-            GetCartLineList().RemoveAll(l => l.Product.Id == product.Id);
+        public void RemoveLine(Product product)
+        {
+            _lines.RemoveAll(l => l.Product.Id == product.Id);
+        }
 
         /// <summary>
         /// Get total value of a cart
@@ -78,8 +71,7 @@ namespace P2FixAnAppDotNetCode.Models
         /// </summary>
         public Product FindProductInCartLines(int productId)
         {
-            var line = _lines.Find(l => l.Product.Id == productId);
-            return line?.Product;
+            return _lines.Find(l => l.Product.Id == productId)?.Product;
         }
 
         /// <summary>
@@ -95,14 +87,12 @@ namespace P2FixAnAppDotNetCode.Models
         /// </summary>
         public void Clear()
         {
-            List<CartLine> cartLines = GetCartLineList();
-            cartLines.Clear();
+            _lines.Clear();
         }
     }
 
     public class CartLine
     {
-        public int OrderLineId { get; set; }
         public Product Product { get; set; }
         public int Quantity { get; set; }
     }
