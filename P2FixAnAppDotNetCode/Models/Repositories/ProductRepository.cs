@@ -9,11 +9,16 @@ namespace P2FixAnAppDotNetCode.Models.Repositories
     public class ProductRepository : IProductRepository
     {
         private static List<Product> _products;
+        private static bool _isInitialized = false;
 
         public ProductRepository()
         {
-            _products = new List<Product>();
-            GenerateProductData();
+            if (!_isInitialized)
+            {
+                _products = new List<Product>();
+                GenerateProductData();
+                _isInitialized = true;
+            }
         }
 
         /// <summary>
@@ -52,7 +57,7 @@ namespace P2FixAnAppDotNetCode.Models.Repositories
         public void UpdateProductStocks(int productId, int quantityToRemove)
         {
             Product product = _products.First(p => p.Id == productId);
-            product.Stock = product.Stock - quantityToRemove;
+            product.Stock -= quantityToRemove;
 
             if (product.Stock == 0)
                 _products.Remove(product);
