@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using P2FixAnAppDotNetCode.Models;
 using P2FixAnAppDotNetCode.Models.Services;
 
@@ -26,21 +25,17 @@ namespace P2FixAnAppDotNetCode.Controllers
         {
             Product product = _productService.GetProductById(id);
 
-            if (product != null)
+            if (product?.Stock > 0)
             {
                 _cart.AddItem(product, 1);
                 return RedirectToAction("Index");
             }
-            else
-            {
-                return RedirectToAction("Index", "Product");
-            }
+            return RedirectToAction("Index", "Product");
         }
 
         public RedirectToActionResult RemoveFromCart(int id)
         {
-            Product product = _productService.GetAllProducts()
-                .FirstOrDefault(p => p.Id == id);
+            Product product = _productService.GetAllProducts().Find(p => p.Id == id);
 
             if (product != null)
             {

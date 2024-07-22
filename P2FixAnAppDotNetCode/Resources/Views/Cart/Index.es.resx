@@ -117,16 +117,35 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ErrorMissingAddress" xml:space="preserve">
-    <value>Please enter an adress</value>
+  <data name="Checkout" xml:space="preserve">
+    <value>Pagar</value>
   </data>
-  <data name="ErrorMissingCity" xml:space="preserve">
-    <value>Please enter a city name</value>
+  <data name="ContinueShopping" xml:space="preserve">
+    <value>Seguir comprando</value>
   </data>
-  <data name="ErrorMissingCountry" xml:space="preserve">
-    <value>Please enter a country name</value>
+  <data name="Item" xml:space="preserve">
+    <value>Artículo</value>
   </data>
-  <data name="ErrorMissingName" xml:space="preserve">
-    <value>Please enter a name</value>
+  <data name="Price" xml:space="preserve">
+    <value>Precio</value>
+  </data>
+  <data name="Quantity" xml:space="preserve">
+    <value>Cantidad</value>
+  </data>
+  <data name="Remove" xml:space="preserve">
+    <value>Eliminar</value>
+  </data>
+  <data name="Subtotal" xml:space="preserve">
+    <value>Subtotal</value>
+  </data>
+  <data name="Total" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="YourCart" xml:space="preserve">
+    <value>Tu carrito</value>
+  </data>
+  <data name="Average" xml:space="preserve">
+    <value>Promedio</value>
+    <comment>Average</comment>
   </data>
 </root>
