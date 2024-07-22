@@ -25,7 +25,7 @@ namespace P2FixAnAppDotNetCode.Controllers
         {
             Product product = _productService.GetProductById(id);
 
-            if (product != null)
+            if (product?.Stock > 0)
             {
                 _cart.AddItem(product, 1);
                 return RedirectToAction("Index");
